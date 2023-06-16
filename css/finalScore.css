@@ -1,0 +1,21 @@
+p {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #fff;  
+}
+
+span {
+    font-size: 2.2rem;
+    color: #fff;  
+}
+
+ul {
+  list-style-type: none; 
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+li {
+   font-size: 2.5rem; 
+}

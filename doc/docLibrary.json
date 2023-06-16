@@ -1,0 +1,122 @@
+[
+    {
+        "quizNumber": 1,
+        "quizName": "B2C Certification",
+        "docs": [
+            {
+                "name": "01_B2C_Commerce_Certification_Questions",
+                "path": "./01_B2C_Commerce_Certification_Questions.pdf"
+            },
+            {
+                "name": "02_B2C_Commerce_Certification_Answers",
+                "path": "./02_B2C_Commerce_Certification_Answers.pdf"
+            },
+            {
+                "name": "03_B2C_Commerce_Certification",
+                "path": "./03_B2C_Commerce_Certification.pdf"
+            }
+        ]
+    },
+    {
+        "quizNumber": 2,
+        "quizName": "Javascript Certification",
+        "docs": [
+            {
+                "name": "Superbadge Guide",
+                "path": "./Suberbadge_LWC_Guide.pdf"
+            },
+            {
+                "name": "JavaScript_Developer_I_Certification_Questions",
+                "path": "./JavaScript_Developer_I_Certification_Questions.docx"
+            },
+            {
+                "name": "Salesforce JavaScript Certification Series",
+                "path": "https://www.youtube.com/watch?v=uqnhupLqLKE&list=PLSWzWO4OqYAqQ8i16aIMakTW7InVuMTZF"
+            },
+                        {
+                "name": "JavaScript Questions",
+                "path": "https://github.com/lydiahallie/javascript-questions"
+            },
+            {
+                "name": "JavaScript Multiple Choice Questions",
+                "path": "https://www.salesforcetroop.com/javascriptmcq"
+            },
+            {
+                "name": "Data Types",
+                "path": "https://docs.google.com/presentation/d/1b_yYJJX99ICsYWikJSnbBicLTdYNLHhUs1UAlwwFWrs/edit#slide=id.p"
+            },
+            {
+                "name": "Regular Expressions",
+                "path": "https://docs.google.com/presentation/d/1jpMwWo_fH3ATeqb2rah340j7UBPMSq4tFuzjW7pF0-c/edit#slide=id.p"
+            },
+            {
+                "name": "Working with Arrays",
+                "path": "https://docs.google.com/presentation/d/1S_R5vgL-2ep9b0CTSz5_SIIxs6NcBsf9Z_H5mbOpvUI/edit#slide=id.p"
+            },
+            {
+                "name": "Working with Functions",
+                "path": "https://docs.google.com/presentation/d/1SyJQBrzUZo0fIuq1oxh2Ojj3JMSJaQeXOErj1mseD9Y/edit#slide=id.p"
+            },
+            {
+                "name": "Object and Classes",
+                "path": "https://docs.google.com/presentation/d/1PAcWS13paLbVXGJtLq_zNkGoq56OFy101jLh6PYjpis/edit#slide=id.p"
+            },
+            {
+                "name": "Promises",
+                "path": "https://docs.google.com/presentation/d/1bH2THCbkwjEbJgQMFzNXlW2WyqtVmr1FlxWXo7hc6Lc/edit#slide=id.p"
+            },
+            {
+                "name": "Errors",
+                "path": "https://docs.google.com/presentation/d/1f4sp7fg6fkjkkHU8lxGQRsnlTttpk99-oUVukN1YGeM/edit#slide=id.p"
+            },
+            {
+                "name": "Browser Storage",
+                "path": "https://docs.google.com/presentation/d/1IYy7jO6AeDDfEQUX0GxEI2WAtCffDX0DSp-L0KVNGGw/edit#slide=id.p"
+            },
+            {
+                "name": "Data Types",
+                "path": "https://javascript.info/types"
+            },
+                        {
+                "name": "Keyed collections",
+                "path": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections"
+            },
+            {
+                "name": "Template literals",
+                "path": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals"
+            },
+            {
+                "name": "Object basics",
+                "path": "https://javascript.info/object-basics"
+            },
+            {
+                "name": "Working with objects",
+                "path": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
+            },
+            {
+                "name": "Import",
+                "path": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import"
+            },
+            {
+                "name": "Objects",
+                "path": "https://javascript.info/object"
+            },
+            {
+                "name": "Functions",
+                "path": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+            },
+            {
+                "name": "for...in",
+                "path": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in"
+            },
+            {
+                "name": "JavaScript Regex Flags",
+                "path": "https://www.codeguage.com/courses/regexp/flags#:~:text=The%20i%20flag%20makes%20an,in%20effect%2C%20the%20same%20expressions."
+            },
+            {
+                "name": "Debouncing in JavaScript",
+                "path": "https://www.geeksforgeeks.org/debouncing-in-javascript/"
+            }
+        ]
+    }
+]
