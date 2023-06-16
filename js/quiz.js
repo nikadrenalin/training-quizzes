@@ -6,6 +6,17 @@ const choices = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
+const nextChoice = document.querySelector('.js-nextChoice');
+
+const cssClasses = {
+    'incorrect': 'incorrect',
+    'correct': 'correct'
+};
+
+const jsSelectors = {
+    'incorrect': '.incorrect',
+    'correct': '.correct'
+};
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -65,30 +76,37 @@ choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if (!acceptingAnswers) return;
 
-        const CORRECT_CSS_CLASS = 'correct';
-
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectAnswer = Number(selectedChoice.dataset['number']);
         const correctAnswer = document.querySelector(`[data-number="${Number(currentQuestion.answer)}"]`);
 
-        const classToApply = selectAnswer === Number(currentQuestion.answer) ? CORRECT_CSS_CLASS : 'incorrect';
+        const classToApply = selectAnswer === Number(currentQuestion.answer) ? cssClasses.correct : cssClasses.incorrect;
 
-        if (classToApply === CORRECT_CSS_CLASS) {
+        if (classToApply === cssClasses.correct) {
             incrementScore(SCORE_POINTS);
         } else {
             incorrectAnswers.push(currentQuestion.questionNumber);
         }
 
         selectedChoice.parentElement.classList.add(classToApply);
-        correctAnswer.parentElement.classList.add(CORRECT_CSS_CLASS);
-
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply);
-            correctAnswer.parentElement.classList.remove(CORRECT_CSS_CLASS);
-            getNewQuestion();
-        }, 1000);
+        correctAnswer.parentElement.classList.add(cssClasses.correct);
     })
+});
+
+nextChoice.addEventListener('click', () => {
+    const incorrect = document.querySelector(jsSelectors.incorrect);
+    const correct = document.querySelector(jsSelectors.correct);
+
+    if (incorrect) {
+        incorrect.classList.remove(cssClasses.incorrect);
+    }
+
+    if (correct) {
+        correct.classList.remove(cssClasses.correct);
+    }
+
+    getNewQuestion();
 });
 
 const incrementScore = (num) => {
