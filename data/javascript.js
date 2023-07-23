@@ -58,7 +58,10 @@ const questions = [
         [1, 4, 9, 16].filter(x => x % 2);`,
         option1: `[1, 9]`,
         option2: `[4, 16]`,
-        answer: 1,
+        answer: 2,
+        explanation: `В данном случае условие x % 2 проверяет, является ли элемент x четным числом (т.е., остаток от деления на 2 равен 0). Если элемент удовлетворяет этому условию, то он включается в новый массив.
+
+        Поэтому результатом выполнения данного кода будет новый массив [4, 16], так как только числа 4 и 16 являются четными в исходном массиве [1, 4, 9, 16]`
     },
     {
         questionNumber: 6,
@@ -72,6 +75,14 @@ const questions = [
         option2: `['March'] and ['Jan', 'Feb', April', 'June']`,
         option3: `[ ] and ['Jan', 'Feb', 'March', April', 'June']`,
         answer: 3,
+        explanation: `The splice() method is used to add, remove, or replace elements in an array. In this code, months.splice(1, 0, 'Feb') is called.
+
+        The first argument 1 indicates the index at which the modification will be performed. In this case, it means inserting the new element at index 1.
+        The second argument 0 indicates the number of elements to be removed. Since we are not removing any elements, it is set to 0.
+        The third argument 'Feb' is the element to be inserted at the specified index.
+        The splice() method returns an empty array [] when no elements are removed. In this case, since the second argument is 0, no elements are removed. That's why the first console.log(months.splice(1, 0, 'Feb')) outputs an empty array [].
+        
+        After the modification, the months array will be ['Jan', 'Feb', 'March', 'April', 'June']. So, the second console.log(months) outputs ['Jan', 'Feb', 'March', 'April', 'June'].`
     },
     {
         questionNumber: 7,
@@ -345,6 +356,9 @@ const questions = [
         option3: `Promise {<fulfilled>: 5}`,
         option4: `Error`,
         answer: 3,
+        explanation: `
+        Когда вызывается Promise.resolve(5), создается новый промис, который немедленно разрешается со значением 5. Затем, используя console.log(), выводится этот промис в консоль. В результате выводится строка "Promise {<fulfilled>: 5}", которая указывает на разрешенный промис со значением 5.
+        `
     },
     {
         questionNumber: 21,
@@ -809,6 +823,10 @@ const questions = [
         option1: `true`,
         option2: `false`,
         answer: 1,
+        explanation: `
+        При сравнении строк в JavaScript используется лексикографическое сравнение, где каждый символ в строке имеет свое числовое представление (код символа). При сравнении строк символы сравниваются по их числовым значениям.
+
+В данном случае, символы "h" и "H" имеют разные числовые значения. Код символа "h" (строчная буква "h") больше кода символа "H" (заглавная буква "H"). Поэтому строка "hello" считается больше строки "Hello" при лексикографическом сравнении. В результате console.log("hello" > "Hello") возвращает true.`
     },
     {
         questionNumber: 51,
@@ -1069,6 +1087,8 @@ const questions = [
         option3: `TypeError: Assignment to constant variable`,
         option4: `Hello Dan Doe`,
         answer: 2,
+        explanation: `
+        Этот подход копирования объекта с использованием JSON.stringify() и JSON.parse() создает новый объект, но он не сохраняет методы объекта. В результате, у объекта dan будет только два свойства`
     },
     {
         questionNumber: 65,
@@ -1308,6 +1328,11 @@ const questions = [
         1
         3`,
         answer: 2,
+        explanation: `
+        console.log(2) logs the number 2 to the console.
+callDelay() is called, which is an asynchronous function that logs the number 1 to the console after a delay of 1000 milliseconds.
+console.log(3) logs the number 3 to the console.
+Therefore, the output is 2, 3, and then 1.`
     },
     {
         questionNumber: 74,
@@ -1632,18 +1657,18 @@ const questions = [
     {
         questionNumber: 89,
         question: `
-        01 let obj = {
-        02    foo: 1,
-        03    bar: 2
-        04 }
-        05
-        06 let output = [];
-        07
-        08 for (let something in obj) {
-        09     output.push(something);
-        10 }
-        11
-        12 console.log(output);
+         let obj = {
+            foo: 1,
+            bar: 2
+         }
+        
+         let output = [];
+        
+         for (let something in obj) {
+             output.push(something);
+         }
+        
+         console.log(output);
         
         What is the output of line 12?`,
         option1: `[1, 2]`,
@@ -1838,10 +1863,10 @@ const questions = [
     {
         questionNumber: 98,
         question: `
-        01 const event = new CustomEvent(
-        02    // Missing code
-        03 );
-        04 obj.dispatchEvent(event);
+        const event = new CustomEvent(
+           // Missing code
+        );
+        obj.dispatchEvent(event);
         
         A developer needs to dispatch a custom event called update to send information about recordId.
         
@@ -2628,6 +2653,11 @@ const questions = [
         option3: `true true false true`,
         option4: `true true true true`,
         answer: 3,
+        explanation: `
+        obj.hasOwnProperty('1') returns true because the object has a property named '1'.
+obj.hasOwnProperty(1) returns true because the object has a property named 1. JavaScript automatically converts the string '1' to the number 1.
+set.has('1') returns false because the set does not have an element with the value '1'. The set has an element with the value 1, but JavaScript does not automatically convert the string '1' to the number 1.
+set.has(1) returns true because the set has an element with the value 1.`
     },
     {
         questionNumber: 141,
@@ -2664,11 +2694,15 @@ const questions = [
         What does the setInterval method return in the browser?
         
         setInterval(() => console.log('Hi'), 1000);`,
-        option1: `a unique id`,
+        option1: `строки "Hi" каждую секунду`,
         option2: `the amount of milliseconds specified`,
         option3: `the passed function`,
         option4: `undefined`,
         answer: 1,
+        explanation: `
+        Этот код запустит функцию console.log('Hi') через каждый интервал времени в 1000 миллисекунд (1 секунда). Результатом выполнения кода будет вывод в консоль строки "Hi" каждую секунду.
+
+Функция setInterval используется для установки повторяющихся интервалов и выполняет указанную функцию через определенный промежуток времени. В данном случае, она будет вызывать функцию console.log('Hi') каждую секунду, пока не будет явно остановлена`
     },
     {
         questionNumber: 144,
@@ -2717,6 +2751,8 @@ const questions = [
         option3: `{1, 1, 2, 3, 4}`,
         option4: `{1, 2, 3, 4}`,
         answer: 4,
+        explanation: `
+        The reason is that the Set constructor creates a new set object with the elements [1, 1, 2, 3, 4]. However, since sets only allow unique values, the duplicate value 1 is removed from the set. Therefore, the output is a set object with the elements [1, 2, 3, 4].`
     },
     {
         questionNumber: 147,
@@ -2738,6 +2774,12 @@ const questions = [
         option3: `Error`,
         option4: `NaN`,
         answer: 3,
+        explanation: `
+        В коде выше, мы импортируем значение counter из модуля counter.js с помощью выражения import myCounter from './counter'. Однако, поскольку мы импортируем значение по умолчанию (export default), оно импортируется как только для чтения (read-only).
+
+Поэтому, попытка изменить значение myCounter с помощью myCounter += 1 приведет к ошибке, так как значение myCounter является неизменяемым.
+
+Для того чтобы изменить значение переменной counter, необходимо в модуле counter.js экспортировать его как изменяемую переменную, например, с помощью export let counter = 10;.`
     },
     {
         questionNumber: 148,
@@ -2841,6 +2883,10 @@ const questions = [
         option3: `true`,
         option4: `undefined`,
         answer: 2,
+        explanation: `
+        Метод push возвращает новую длину массива после добавления элемента. В данном случае, массив ['banana'] становится ['banana', 'apple'], и новая длина массива равна 2. Значение 2 будет присвоено переменной result.
+
+Следовательно, при выполнении кода, в консоль будет выведено значение 2.`
     },
     {
         questionNumber: 154,
@@ -3078,6 +3124,12 @@ const questions = [
         option3: `undefined and undefined`,
         option4: `SyntaxError`,
         answer: 2,
+        explanation: `
+        Функция nums принимает два аргумента a и b. Внутри функции есть условное выражение, которое проверяет, если a больше b, то выводится сообщение 'a is bigger'. В противном случае, выводится сообщение 'b is bigger'. Однако, после этого следует оператор return без возвращаемого значения. Это означает, что функция завершается без явного возвращаемого значения, и по умолчанию возвращается undefined.
+
+При вызове nums(4, 2), условие a > b выполняется, и выводится сообщение 'a is bigger'. Затем, функция завершается и возвращается undefined. Поэтому первый console.log(nums(4, 2)) выведет undefined.
+
+Аналогично, при вызове nums(1, 2), условие a > b не выполняется, и выводится сообщение 'b is bigger'. Затем, функция завершается и возвращается undefined. Поэтому второй console.log(nums(1, 2)) также выведет undefined.`
     },
     {
         questionNumber: 167,
@@ -3281,11 +3333,14 @@ const questions = [
         };
 
         add(4)(5)(6);`,
-        option1: `4 5 6`,
+        option1: `4 5 6
+        15`,
         option2: `6 5 4`,
         option3: `4 function function`,
         option4: `undefined undefined 6`,
         answer: 1,
+        explanation: `
+        Код определяет функцию add, которая принимает один аргумент x и возвращает функцию, которая в свою очередь принимает аргумент y и возвращает еще одну функцию, принимающую аргумент z. Когда все три аргумента x, y и z передаются последовательно в цепочке вызовов функции add, они будут выведены на консоль, а затем будет возвращена их сумма (15)`
     },
     {
         questionNumber: 177,
@@ -3305,6 +3360,20 @@ const questions = [
         option3: `false false true false`,
         option4: `false true false true`,
         answer: 3,
+        explanation: `
+        The Number.isNaN() method is used to determine whether a value is NaN (Not-a-Number) of the Number type. It returns true if the provided value is NaN and of the Number type, otherwise it returns false.
+
+In the code snippet, name is a string and age is a number. Here's what happens with each console.log() statement:
+
+console.log(Number.isNaN(name)); - Since name is a string and not a number, Number.isNaN() returns true. This is because the string cannot be directly converted to a valid numeric value and is not of the Number type.
+
+console.log(Number.isNaN(age)); - Since age is a number, Number.isNaN() returns false. This is because age is a valid numeric value of the Number type and is not NaN.
+
+console.log(isNaN(name)); - The global isNaN() function is used here. It first tries to convert the argument to a number, and if successful, it then checks if the resulting value is NaN. Since name cannot be converted to a number, it returns true. This is because isNaN() performs implicit type coercion.
+
+console.log(isNaN(age)); - The global isNaN() function is used again. Since age is a number, it can be converted to a number without any issues, and the resulting value is not NaN. Therefore, isNaN() returns false.
+
+Note: It's important to use Number.isNaN() instead of the global isNaN() function when you want to specifically check if a value is NaN, as the isNaN() function can have unexpected behavior due to implicit type coercion`
     },
     {
         questionNumber: 178,
@@ -3671,6 +3740,11 @@ const questions = [
         option5: `A and C are correct`,
         option6: `A and D are correct`,
         answer: 1,
+        explanation: `The code msg.includes('Bond', 1) will return true.
+
+    The includes() method is used to check if a specific substring or value is present within a string. It returns a boolean value (true or false) depending on whether the substring or value is found or not.
+    
+    In this case, msg.includes('Bond', 1) checks if the substring 'Bond' is present in the string msg starting from index 1. Since the substring 'Bond' appears in the string starting from index 11, the includes() method returns true.`
     },    
     {
         questionNumber: 0,

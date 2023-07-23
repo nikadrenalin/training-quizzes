@@ -10,12 +10,14 @@ const nextChoice = document.querySelector('.js-nextChoice');
 
 const cssClasses = {
     'incorrect': 'incorrect',
-    'correct': 'correct'
+    'correct': 'correct',
+    'hidden': 'hidden'
 };
 
 const jsSelectors = {
     'incorrect': '.incorrect',
-    'correct': '.correct'
+    'correct': '.correct',
+    'explanation': '.js-explanation'
 };
 
 let currentQuestion = {};
@@ -70,6 +72,14 @@ const getNewQuestion = () => {
 
     availableQuestions.splice(questionIndex, 1);
     acceptingAnswers = true;
+
+    const explanation = document.querySelector(jsSelectors.explanation);
+    explanation.classList.add('jsHideMe');
+
+    if (currentQuestion.explanation) {
+        explanation.innerHTML = currentQuestion.explanation;
+        explanation.classList.remove(cssClasses.hidden);
+    }
 }
 
 choices.forEach((choice) => {
