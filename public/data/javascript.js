@@ -3049,6 +3049,8 @@ set.has(1) returns true because the set has an element with the value 1.`
         option3: `[1, 2, 3, 4]`,
         option4: `Error`,
         answer: 4,
+        explanation: `
+        In the first line, you create an array newList by calling the push method on the array [1, 2, 3]. The push method modifies the original array by adding the value 4 to the end of it. However, the return value of the push method is the new length of the array after the addition of the element, which is 4 in this case`
     },
     {
         questionNumber: 163,
@@ -3228,6 +3230,13 @@ set.has(1) returns true because the set has an element with the value 1.`
         option3: `['a', 'b', 'c'] and a`,
         option4: `a and ['a', 'b', 'c']`,
         answer: 3,
+        explanation: `Причина различия в выводе заключается в том, как определены генераторы generatorOne и generatorTwo.
+
+        В generatorOne, используется yield, чтобы вернуть массив ['a', 'b', 'c']. Когда мы вызываем one.next().value, он возвращает этот массив, и поэтому выводится ['a', 'b', 'c'].
+        
+        В generatorTwo, используется yield*, чтобы делегировать выполнение другому итерируемому объекту, в данном случае, массиву ['a', 'b', 'c']. Когда мы вызываем two.next().value, генератор делегирует выполнение массиву, и первый элемент массива 'a' возвращается. Поэтому выводится a.
+        
+        Обратите внимание, что yield* позволяет делегировать выполнение другому генератору или итерируемому объекту, в то время как обычный yield возвращает значение, которое передается внутри генератора.`
     },
     {
         questionNumber: 172,
