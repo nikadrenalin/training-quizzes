@@ -1863,10 +1863,10 @@ Therefore, the output is 2, 3, and then 1.`
     {
         questionNumber: 98,
         question: `
-        const event = new CustomEvent(
-           // Missing code
-        );
-        obj.dispatchEvent(event);
+        01 const event = new CustomEvent(
+        02    // Missing code
+        03 );
+        04 obj.dispatchEvent(event);
         
         A developer needs to dispatch a custom event called update to send information about recordId.
         

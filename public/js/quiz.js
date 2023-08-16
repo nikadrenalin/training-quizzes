@@ -20,40 +20,67 @@ const jsSelectors = {
     'explanation': '.js-explanation'
 };
 
-let currentQuestion = {};
 let acceptingAnswers = true;
-let availableQuestions = [];
+let incorrectAnswers = localStorage.getItem('incorrectAnswers') || [];
+let appData = null;
+let currentQuestion = {};
+let sourceModule = '../data/';
 let questions = [{}];
-let incorrectAnswers = [];
+let availableQuestions = [];
+
+const getAppData = () => {
+    appData = localStorage.getItem('appData');
+
+    if (!appData) {
+        appData = {
+            'questions': [{}],
+            'questionCounter': 0,
+            'score': 0,
+            'questionIndex': null
+        };
+
+        return startGame();
+    }
+
+    try {
+        appData = JSON.parse(appData);
+    } catch (error) {
+        console.error(error);
+    }
+
+    startGame();
+}
 
 const SCORE_POINTS = 1;
-let score = 0;
-let MAX_QUESTIONS = 0;
-let questionCounter = 0;
+let maxQustions = 0;
 
 const startGame = () => {
-    questionCounter = 0;
-    score = 0;
-    availableQuestions = [...questions];
-    MAX_QUESTIONS = maxNumberOfQuestions || availableQuestions.length;
+    maxQustions = maxNumberOfQuestions || availableQuestions.length;
     getNewQuestion();
+    scoreText.innerHTML = appData.score;
 } 
 
 const getNewQuestion = () => {
-    if (availableQuestions.length === 0 ||
-        questionCounter >= MAX_QUESTIONS) {
-            const finalResult = { score: score, wrongAnswers: (MAX_QUESTIONS - score) };
-            localStorage.setItem('mostRecentScore', JSON.stringify(finalResult) );
+    if (
+        availableQuestions.length === 0 ||
+        appData.questionCounter >= maxQustions
+    ) {
+            const finalResult = {
+                score: appData.score,
+                wrongAnswers: (maxQustions - appData.score)
+            };
 
+            localStorage.setItem('mostRecentScore', JSON.stringify(finalResult) );
             localStorage.setItem('incorrectAnswers', JSON.stringify(incorrectAnswers));
+
             return window.location.assign('./finalScore.html');
     }
 
-    questionCounter++;
-    progressText.innerHTML = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
-    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+    appData.questionCounter++;
+    progressText.innerHTML = `Question ${appData.questionCounter} of ${maxQustions}`;
+    progressBarFull.style.width = `${(appData.questionCounter / maxQustions) * 100}%`;
 
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    let questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
 
     title.innerText = `QUESTION ${currentQuestion.questionNumber}`;
@@ -117,22 +144,23 @@ nextChoice.addEventListener('click', () => {
     }
 
     getNewQuestion();
+
+    localStorage.setItem('appData', JSON.stringify(appData));
 });
 
 const incrementScore = (num) => {
-    score += num;
-    scoreText.innerHTML = score;
+    appData.score += num;
+    scoreText.innerHTML = appData.score;
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-
 const quizNumber = Number(urlParams.get('quizId'));
+
 localStorage.setItem('quizNumber', quizNumber);
 
 let maxNumberOfQuestions = parseInt(urlParams.get('maxNumberOfQuestions')) || 0;
 maxNumberOfQuestions = maxNumberOfQuestions <= 0 ? null : maxNumberOfQuestions;
 
-let sourceModule = '../data/';
 
 switch (quizNumber) {
     case 1:
@@ -148,13 +176,14 @@ switch (quizNumber) {
         break;
 }
 
+
 import(sourceModule)
-  .then((module) => {
-    questions = module.default.questions.filter((question) => question.questionNumber > 0 );
-    startGame();
-  })
-  .catch(error => {
-    window.location.href = '../finalScore.html';
-  });
-
-
+    .then((module) => {
+        questions = module.default.questions.filter((question) => question.questionNumber > 0 );
+        availableQuestions = [...questions];
+        getAppData();
+    })
+    .catch((error) => {
+        console.error(error);
+        window.location.href = '../finalScore.html';
+    });
